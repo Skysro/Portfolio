@@ -22,7 +22,7 @@ const Footer = () => {
           next level?
         </h1>
         <p className="text-white-200 md:mt-10 my-5 text-center">
-          Reach out to me today and let&apos;s discuss how I can help you. I'm
+          Reach out to me today and let&apos;s discuss how I can help you. I&apos;m
           currently looking for opportunities to collaborate with other
           developers and designers.
         </p>

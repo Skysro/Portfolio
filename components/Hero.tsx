@@ -44,7 +44,7 @@ const Hero = () => {
             words="I love to build web applications to help make world a better place."
           />
           <p className="text-left md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            I'm a full stack developer with a passion for creating dynamic and
+            I&apos;m a full stack developer with a passion for creating dynamic and
             interactive web applications.
           </p>
           <a href="#about">
