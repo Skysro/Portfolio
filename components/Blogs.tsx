@@ -20,7 +20,7 @@ const Blogs = () => {
             des="In recent years, India has emerged as a significant player in the global web development landscape. With its vast pool of talented developers, competitive costs, and a thriving tech ecosystem, the country has become a hub for innovation and growth in web development. Let's explore how the field has evolved and what the current trends and challenges are."
           >
             <CanvasRevealEffect
-              animationSpeed={2.1}
+              animationSpeed={2}
               // add these classed for the border rounded overflowing -> rounded-3xl overflow-hidden
               containerClassName="bg-emerald-900 rounded-3xl overflow-hidden"
             />
@@ -33,7 +33,7 @@ const Blogs = () => {
           des="OMW"
         >
           <CanvasRevealEffect
-            animationSpeed={3}
+            animationSpeed={2}
             // change bg-black to bg-pink-900
             containerClassName="bg-pink-900 rounded-3xl overflow-hidden"
             colors={[
@@ -54,7 +54,7 @@ const Blogs = () => {
           des="OMW"
         >
           <CanvasRevealEffect
-            animationSpeed={3}
+            animationSpeed={2}
             containerClassName="bg-sky-600 rounded-3xl overflow-hidden"
             colors={[[125, 211, 252]]}
           />
