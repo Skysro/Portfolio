@@ -2,12 +2,12 @@
 
 import React from "react";
 
-import { companies, testimonials } from "@/data";
+import { companies, skills } from "@/data";
 import { InfiniteMovingCards } from "./ui/InfiniteCards";
 
 const Clients = () => {
   return (
-    <section id="testimonials" className="py-20">
+    <section id="skills" className="py-20">
       <h1 className="heading">
         My
         <span className="text-purple"> Skills</span>
@@ -19,7 +19,7 @@ const Clients = () => {
           className="h-[50vh] md:h-[30rem] rounded-md flex flex-col antialiased  items-center justify-center relative overflow-hidden"
         >
           <InfiniteMovingCards
-            items={testimonials}
+            items={skills}
             direction="right"
             speed="slow"
           />
@@ -30,7 +30,7 @@ const Clients = () => {
             <React.Fragment key={company.id}>
               <div className="flex md:max-w-60 max-w-32 gap-2">
                 <img
-                  src={company.img}
+                  src={company.nameImg}
                   alt={company.name}
                   className="md:w-10 w-5"
                 />
