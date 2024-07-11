@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
+import Image from "next/image";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import MagicButton from "./MagicButton";
@@ -44,8 +45,8 @@ const Hero = () => {
             words="I love to build web applications to help make world a better place."
           />
           <p className="text-left md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            I&apos;m a full stack developer with a passion for creating dynamic and
-            interactive web applications.
+            I&apos;m a full stack developer with a passion for creating dynamic
+            and interactive web applications.
           </p>
           <a href="#about">
             <MagicButton
@@ -59,9 +60,12 @@ const Hero = () => {
         </div>
         <div className="flex justify-center items-center">
           <GlareCard className="flex flex-col items-center justify-center">
-            <img
-              className="h-32 w-32 md:h-48 md:w-48 lg:h-64 lg:w-64 relative inset-0 object-cover"
+            <Image
+              className="relative inset-0 object-cover"
               src="https://firebasestorage.googleapis.com/v0/b/silent-echoes.appspot.com/o/profileImages%2FSkysro420?alt=media&token=d83f4709-1f2b-49cb-9ebc-9d43e11db222"
+              alt="Profile Image"
+              width={230}
+              height={230}
             />
           </GlareCard>
         </div>
