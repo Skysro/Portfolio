@@ -1,37 +1,35 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
-interface Item {
-  quote: string;
-  name: string;
-  title: string;
-  image: string;
-}
-
-interface InfiniteMovingCardsProps {
-  items: Item[];
-  direction?: "left" | "right";
-  speed?: "fast" | "normal" | "slow";
-  pauseOnHover?: boolean;
-  className?: string;
-}
-
-export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
+export const InfiniteMovingCards = ({
   items,
   direction = "left",
   speed = "fast",
   pauseOnHover = true,
   className,
+}: {
+  items: {
+    quote: string;
+    name: string;
+    title: string;
+    image: string;
+  }[];
+  direction?: "left" | "right";
+  speed?: "fast" | "normal" | "slow";
+  pauseOnHover?: boolean;
+  className?: string;
 }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const scrollerRef = useRef<HTMLUListElement>(null);
-  const [start, setStart] = useState(false);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const scrollerRef = React.useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     addAnimation();
   }, []);
+
+  const [start, setStart] = useState(false);
 
   const addAnimation = () => {
     if (containerRef.current && scrollerRef.current) {
@@ -39,16 +37,18 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
 
       scrollerContent.forEach((item) => {
         const duplicatedItem = item.cloneNode(true);
-        scrollerRef.current?.appendChild(duplicatedItem);
+        if (scrollerRef.current) {
+          scrollerRef.current.appendChild(duplicatedItem);
+        }
       });
 
-      setDirection();
-      setSpeed();
+      getDirection();
+      getSpeed();
       setStart(true);
     }
   };
 
-  const setDirection = () => {
+  const getDirection = () => {
     if (containerRef.current) {
       const animationDirection = direction === "left" ? "forwards" : "reverse";
       containerRef.current.style.setProperty(
@@ -58,21 +58,21 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
     }
   };
 
-  const setSpeed = () => {
+  const getSpeed = () => {
     if (containerRef.current) {
       let duration;
       switch (speed) {
         case "fast":
-          duration = "10s";
+          duration = "20s";
           break;
         case "normal":
-          duration = "20s";
-          break;
-        case "slow":
           duration = "40s";
           break;
+        case "slow":
+          duration = "80s";
+          break;
         default:
-          duration = "20s";
+          duration = "40s";
       }
       containerRef.current.style.setProperty("--animation-duration", duration);
     }
@@ -82,14 +82,14 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 h-64 md:h-80 lg:h-96 overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+        "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
         className
       )}
     >
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex min-w-full shrink-0 gap-4 md:gap-8 py-4 w-full flex-nowrap",
+          "flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
@@ -97,46 +97,32 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
         {items.map((item, idx) => (
           <li
             key={idx}
-            className="w-48 h-48 md:w-60 md:h-60 lg:w-72 lg:h-72 max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-800 p-5 md:p-8 lg:p-12"
+            className="w-48 h-48 md:w-60 md:h-60 lg:w-72 lg:h-72 max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-700 p-5 md:p-8 lg:p-12"
             style={{
-              background: "rgb(4,7,29)",
-              backgroundColor:
-                "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+              background:
+                "linear-gradient(180deg, var(--slate-800), var(--slate-900))",
             }}
           >
-            <div className="flex flex-col items-center justify-center h-full">
-              <img
-                src={item.image}
-                alt="item"
-                className="w-16 h-16 md:w-24 md:h-24 lg:w-32 lg:h-32 mb-4"
-              />
-              <span className="relative z-20 text-sm md:text-base lg:text-lg leading-[1.6] text-white font-normal text-center">
+            <blockquote className="flex flex-col items-center justify-center h-full">
+              <span className="relative z-20 text-sm md:text-base lg:text-lg leading-[1.6] text-gray-100 font-normal text-center mb-4">
                 {item.quote}
               </span>
-            </div>
-          </li>
-        ))}
-        {/* Duplicate items for smooth infinite scrolling */}
-        {items.map((item, idx) => (
-          <li
-            key={`duplicate-${idx}`}
-            className="w-48 h-48 md:w-60 md:h-60 lg:w-72 lg:h-72 max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-800 p-5 md:p-8 lg:p-12"
-            style={{
-              background: "rgb(4,7,29)",
-              backgroundColor:
-                "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-            }}
-          >
-            <div className="flex flex-col items-center justify-center h-full">
-              <img
+              <Image
                 src={item.image}
-                alt="item"
-                className="w-16 h-16 md:w-24 md:h-24 lg:w-32 lg:h-32 mb-4"
+                alt={item.name}
+                width={100}
+                height={100}
+                className="w-16 h-16 md:w-24 md:h-24 lg:w-32 lg:h-32"
               />
-              <span className="relative z-20 text-sm md:text-base lg:text-lg leading-[1.6] text-white font-normal text-center">
-                {item.quote}
-              </span>
-            </div>
+              <div className="relative z-20 mt-4 flex flex-col items-center">
+                <span className="text-sm leading-[1.6] text-gray-400 font-normal">
+                  {item.name}
+                </span>
+                <span className="text-sm leading-[1.6] text-gray-400 font-normal">
+                  {item.title}
+                </span>
+              </div>
+            </blockquote>
           </li>
         ))}
       </ul>
