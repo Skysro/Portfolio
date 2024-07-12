@@ -21,44 +21,44 @@ const Blogs = () => {
           >
             <CanvasRevealEffect
               animationSpeed={2}
-              // add these classed for the border rounded overflowing -> rounded-3xl overflow-hidden
               containerClassName="bg-emerald-900 rounded-3xl overflow-hidden"
             />
           </Card>
         </a>
-        <Card
-          title="Not Yet"
-          icon={<AceternityIcon order="Blog 2" />}
-          href="/blogs/development-progress-update"
-          des="OMW"
-        >
-          <CanvasRevealEffect
-            animationSpeed={2}
-            // change bg-black to bg-pink-900
-            containerClassName="bg-pink-900 rounded-3xl overflow-hidden"
-            colors={[
-              // change the colors of the
-              [255, 166, 158],
-              [221, 255, 247],
-            ]}
-            dotSize={2}
-          />
-          {/* Radial gradient for the cute fade */}
-          {/* remove this one */}
-          {/* <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" /> */}
-        </Card>
-        <Card
-          title="Not Yet"
-          href="/blogs/development-launch"
-          icon={<AceternityIcon order="Blog 3" />}
-          des="OMW"
-        >
-          <CanvasRevealEffect
-            animationSpeed={2}
-            containerClassName="bg-sky-600 rounded-3xl overflow-hidden"
-            colors={[[125, 211, 252]]}
-          />
-        </Card>
+        <a href="https://medium.com/@pritamleicapanda/the-fascinating-world-of-quantum-computers-an-overview-37e0d9dc5077">
+          <Card
+            title="The Fascinating World of Quantum Computers: An Overview"
+            icon={<AceternityIcon order="Blog 2" />}
+            href=""
+            des="Quantum computing is one of the most exciting and revolutionary fields in modern science and technology. While classical computers, the ones we use every day, process information using bits (0s and 1s), quantum computers harness the principles of quantum mechanics to perform calculations in ways that classical computers can’t. This blog delves into the basics of quantum computing, its potential applications, and the challenges it faces."
+          >
+            <CanvasRevealEffect
+              animationSpeed={2}
+              // change bg-black to bg-pink-900
+              containerClassName="bg-pink-900 rounded-3xl overflow-hidden"
+              colors={[
+                // change the colors of the
+                [255, 166, 158],
+                [221, 255, 247],
+              ]}
+              dotSize={2}
+            />
+          </Card>
+        </a>
+        <a href="https://medium.com/@pritamleicapanda/the-plight-of-unemployment-among-indian-engineers-e76899be0a67">
+          <Card
+            title="The Plight of Unemployment Among Indian Engineers"
+            href=""
+            icon={<AceternityIcon order="Blog 3" />}
+            des="OMWIndia, known for its robust educational system, particularly in science, technology, engineering, and mathematics (STEM), produces a large number of engineers annually. However, a growing concern is the rising unemployment rate among these engineers. This blog delves into the reasons behind this trend, its impact on the economy and society, and potential solutions to address the issue."
+          >
+            <CanvasRevealEffect
+              animationSpeed={2}
+              containerClassName="bg-sky-600 rounded-3xl overflow-hidden"
+              colors={[[125, 211, 252]]}
+            />
+          </Card>
+        </a>
       </div>
     </section>
   );
