@@ -236,7 +236,7 @@ export const companies = [
   {
     id: 1,
     name: "Hexagon",
-    nameImg: "/.png",
+    nameImg: "/hexagon-logo-svg",
   },
 ];
 
