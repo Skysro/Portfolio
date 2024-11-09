@@ -232,13 +232,13 @@ export const skills = [
   },
 ];
 
-export const companies = [
-  {
-    id: 1,
-    name: "Tikkl",
-    nameImg: "/tikkl-logo.png",
-  },
-];
+// export const companies = [
+//   {
+//     id: 1,
+//     name: "Tikkl",
+//     nameImg: "/tikkl-logo.png",
+//   },
+// ];
 
 export const workExperience = [
   {
